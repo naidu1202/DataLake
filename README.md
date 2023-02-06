@@ -1,45 +1,28 @@
 # DataLake
 
 Project - Data Lake
-A music streaming startup, Sparkify, has grown their user base and song database even more and want to move their data warehouse to a data lake. Their data resides in S3, in a directory of JSON logs on user activity on the app, as well as a directory with JSON metadata on the songs in their app.
 
-In this project, we will build an ETL pipeline for a data lake hosted on S3. We will load data from S3, process the data into analytics tables using Spark, and load them back into S3. We will deploy this Spark process on a cluster using AWS.
+To improve  website personalization platform, to comeup with a data pipeline in data platform to handle the large-scale data. Data is being retrieving from web page and mobile app via FTP in a daily batch
+
+Data recieves and uploaded to S3 in json files. Build an ETL pipeline for a data lake hosted on S3. We will load data from S3, process the data into analytics tables using Spark, and load them into snowflake for Data science team consumption. We will deploy this Spark process on a cluster using AWS.
 
 Deployement
-File dl.cfg is not provided here. File contains :
 
-KEY=YOUR_AWS_ACCESS_KEY
-SECRET=YOUR_AWS_SECRET_KEY
-If you are using local as your development environemnt - Moving project directory from local to EMR
-
- scp -i <.pem-file> <Local-Path> <username>@<EMR-MasterNode-Endpoint>:~<EMR-path>
-Running spark job (Before running job make sure EMR Role have access to s3)
-
-spark-submit etl.py --master yarn --deploy-mode client --driver-memory 4g --num-executors 2 --executor-memory 2g --executor-core 2
-ETL Pipeline
 Read data from S3
 
-Song data: s3://udacity-dend/song_data
-Log data: s3://udacity-dend/log_data
-The script reads song_data and load_data from S3.
+searches data: <<bucket_name>>/searches_data
+visitors data: <<bucket_name>>/visitors_data
 
 Process data using spark
 
-Transforms them to create five different tables listed below :
-
-Fact Table
-songplays - records in log data associated with song plays i.e. records with page NextSong
-
-songplay_id, start_time, user_id, level, song_id, artist_id, session_id, location, user_agent
-Dimension Tables
-users - users in the app Fields - user_id, first_name, last_name, gender, level
-
-songs - songs in music database Fields - song_id, title, artist_id, year, duration
-
-artists - artists in music database Fields - artist_id, name, location, lattitude, longitude
-
-time - timestamps of records in songplays broken down into specific units Fields - start_time, hour, day, week, month, year, weekday
-
-Load it back to S3
+Transforms them with basic cleaning and business rules 
 
 Writes them to partitioned parquet files in table directories on S3.
+
+Load data using Airflow
+
+processed data is loaded to snowflake
+
+Build the model for reports.
+
+Model is built for the reports
