@@ -163,10 +163,10 @@ def main():
     spark = create_spark_session()
     
     files=['searches','visitors']
-    bucket_name="sg-udp-data-sync-stg-s3"
-    input_stage_data="s3://sg-udp-data-sync-stg-s3/inbound/test/stage/" 
-    input_data = "s3://sg-udp-data-sync-stg-s3/inbound/test/"
-    output_data = "s3://sg-udp-data-sync-stg-s3/inbound/test/"
+    bucket_name="<<bucket>>"
+    input_stage_data="s3://<<bucket>>/inbound/test/stage/" 
+    input_data = "s3://<<bucket>>/inbound/test/"
+    output_data = "s3://<<bucket>>/inbound/test/"
     
     for input_stage_file in files:
         process_valid_files(bucket_name,input_stage_file)
