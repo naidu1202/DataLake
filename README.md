@@ -1,10 +1,10 @@
 # DataLake
 
-Project - Data Lake
-
 To improve  website personalization platform, to comeup with a data pipeline in data platform to handle the large-scale data. Data is being retrieving from web page and mobile app via FTP in a daily batch
 
 The below are the steps followed for orechestrating the data pipeline.
+
+# DataLake
 
 1. upload the recieved data to S3
 2. process the data using spark application
